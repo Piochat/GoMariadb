@@ -7,9 +7,11 @@ El paquete *middlew* es más un paquete de control que un Middleware como tal. E
 
 **Rutas**
 
+```
 localhost:8484/animeInsert 
-localhost:8484/animeRead
-localhost:8484/getAnime?id=
+localhost:8484/animeRead 
+localhost:8484/getAnime?id= 
+```
 
 ## Estructura de los datos
 
