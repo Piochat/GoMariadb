@@ -7,4 +7,5 @@ type Serie struct {
 	Episodes int    `json:"episodes_serie"`
 	Status   string `json:"status_serie"`
 	Type     string `json:"type_serie"`
+	StudioID int    `json:"studio_id"`
 }

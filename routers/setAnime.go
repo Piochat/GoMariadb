@@ -25,8 +25,7 @@ func AnimeInsert(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//We check the values inside Anime t
-	studio := t.StudioAnime
-	if len(studio.Name) < 1 {
+	if len(t.StudioAnime.Name) < 1 {
 		http.Error(w, "Error Name Empty", http.StatusBadRequest)
 		return
 	}

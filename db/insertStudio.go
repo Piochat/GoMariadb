@@ -17,7 +17,7 @@ func InsertStudio(studio models.Studio) (bool, error) {
 	const condition string = "name_studio"
 
 	//Checking if the data is already in the table
-	idStudio, value := checkStudio(table, condition, studio.Name, idTable)
+	idStudio, value := checkStudio(table, condition, studio.Name, idTable, "Item not found: Proceed Insertion")
 
 	if !value {
 		stmtIns, err := DbCon.Prepare("INSERT INTO " + table + "(" + condition + ") VALUES (?)")
@@ -32,7 +32,7 @@ func InsertStudio(studio models.Studio) (bool, error) {
 			log.Println("Error Statement Insert [File insertStudio]", err.Error())
 			panic(err.Error())
 		}
-		idStudio, _ = checkStudio(table, condition, studio.Name, idTable)
+		idStudio, _ = checkStudio(table, condition, studio.Name, idTable, "Error QueryRow [file insertStudio]")
 	}
 
 	IDstudio = idStudio
@@ -40,7 +40,7 @@ func InsertStudio(studio models.Studio) (bool, error) {
 }
 
 //Returns the id of the anime found, if not found it returns a false boolean.
-func checkStudio(table string, condition string, name string, idTable string) (int, bool) {
+func checkStudio(table string, condition string, name string, idTable string, msg string) (int, bool) {
 	stmtOut, err := DbCon.Prepare("SELECT " + idTable + " FROM " + table + " WHERE " + condition + "= ?")
 	if err != nil {
 		log.Println("Error Statement Out/Select [File insertStudio]", err.Error())
@@ -51,7 +51,7 @@ func checkStudio(table string, condition string, name string, idTable string) (i
 	var idStudio int
 	err = stmtOut.QueryRow(name).Scan(&idStudio)
 	if err != nil {
-		log.Println("Error QueryRow [File insertStudio]", err.Error())
+		log.Println(msg, err.Error())
 	}
 
 	return idStudio, (idStudio != 0)
