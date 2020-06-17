@@ -21,3 +21,11 @@ func PassAnime(series []models.Serie, studios []models.Studio) []models.Anime {
 
 	return animes
 }
+
+//PassOneAnime Generate a single anime with the received
+func PassOneAnime(serie models.Serie, studio models.Studio) models.Anime {
+	return models.Anime{
+		StudioAnime: studio,
+		SerieAnime:  serie,
+	}
+}
