@@ -6,8 +6,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/Piochat/GoMariadb/db"
 	"github.com/Piochat/GoMariadb/middlew"
+
+	"github.com/Piochat/GoMariadb/db"
 )
 
 //GetAnAnime Controller to get an anime

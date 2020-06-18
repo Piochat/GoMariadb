@@ -20,6 +20,8 @@ func Controllers() {
 	router.HandleFunc("/animeInsert", routers.AnimeInsert).Methods("POST")
 	router.HandleFunc("/animeRead", routers.GetAnimes).Methods("GET")
 	router.HandleFunc("/getAnime", routers.GetAnAnime).Methods("GET")
+	router.HandleFunc("/modSerie", routers.ModifySerie).Methods("PUT")
+	router.HandleFunc("/modStudio", routers.ModifyStudio).Methods("PUT")
 	//end paths
 
 	PORT := os.Getenv("PORT")
