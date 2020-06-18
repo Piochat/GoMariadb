@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/Piochat/GoMariadb/middlew"
+
 	"github.com/Piochat/GoMariadb/routers"
 
 	"github.com/rs/cors"
@@ -17,11 +19,11 @@ func Controllers() {
 	router := mux.NewRouter()
 
 	//paths
-	router.HandleFunc("/animeInsert", routers.AnimeInsert).Methods("POST")
-	router.HandleFunc("/animeRead", routers.GetAnimes).Methods("GET")
-	router.HandleFunc("/getAnime", routers.GetAnAnime).Methods("GET")
-	router.HandleFunc("/modSerie", routers.ModifySerie).Methods("PUT")
-	router.HandleFunc("/modStudio", routers.ModifyStudio).Methods("PUT")
+	router.HandleFunc("/animeInsert", middlew.MonitorDB(routers.AnimeInsert)).Methods("POST")
+	router.HandleFunc("/animeRead", middlew.MonitorDB(routers.GetAnimes)).Methods("GET")
+	router.HandleFunc("/getAnime", middlew.MonitorDB(routers.GetAnAnime)).Methods("GET")
+	router.HandleFunc("/modSerie", middlew.MonitorDB(routers.ModifySerie)).Methods("PUT")
+	router.HandleFunc("/modStudio", middlew.MonitorDB(routers.ModifyStudio)).Methods("PUT")
 	//end paths
 
 	PORT := os.Getenv("PORT")
