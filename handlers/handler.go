@@ -24,6 +24,8 @@ func Controllers() {
 	router.HandleFunc("/getAnime", middlew.MonitorDB(routers.GetAnAnime)).Methods("GET")
 	router.HandleFunc("/modSerie", middlew.MonitorDB(routers.ModifySerie)).Methods("PUT")
 	router.HandleFunc("/modStudio", middlew.MonitorDB(routers.ModifyStudio)).Methods("PUT")
+	router.HandleFunc("/delSerie", middlew.MonitorDB(routers.DeleteSeries)).Methods("DELETE")
+	router.HandleFunc("/delStudio", middlew.MonitorDB(routers.DeleteStudio)).Methods("DELETE")
 	//end paths
 
 	PORT := os.Getenv("PORT")
