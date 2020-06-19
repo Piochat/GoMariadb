@@ -8,11 +8,13 @@ El paquete *middlew* es más un paquete de control que un Middleware como tal. E
 **Rutas**
 
 ```
-localhost:8484/animeInsert 
-localhost:8484/animeRead 
-localhost:8484/getAnime?id= 
-localhost:8484/modSerie?idSerie= 
-localhost:8484/modStudio?idStudio= 
+localhost:8484/animeInsert                POST
+localhost:8484/animeRead                  GET
+localhost:8484/getAnime?id=               GET
+localhost:8484/modSerie?idSerie=          PUT
+localhost:8484/modStudio?idStudio=        PUT
+localhost:8484/delStudio?idStudio=        DELETE
+localhost:8484/delSerie?idSserie=         DELETE
 ```
 
 ## Estructura de los datos
@@ -36,9 +38,9 @@ localhost:8484/modStudio?idStudio=
 
 Estructura *Anime*, compuesta por la estructura *Serie* y la estructura *Studio*
 
-**Modificaciones**
+**Modificaciones Y Eliminación**
 
-Las modificaciones son realizadas por separado, *Studio* y *Serie*.
+Las modificaciones y las operaciones para eliminar son realizadas por separado, *Studio* y *Serie*. Para eliminar basta con mandar el ID por ruta del Endpoint.
 
 ```json
 {
